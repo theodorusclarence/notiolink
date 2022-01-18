@@ -64,3 +64,65 @@ export const incrementLinkCount = async (url: Url) => {
     },
   });
 };
+
+export const checkSlugIsTaken = async (slug: string) => {
+  if (!NOTION_LINK_DATABASE_ID) {
+    throw new Error('NEXT_PUBLIC_NOTION_LINK_DATABASE_ID env is not defined');
+  }
+
+  const response = await notion.databases.query({
+    database_id: NOTION_LINK_DATABASE_ID,
+    filter: {
+      property: 'slug',
+      title: {
+        equals: slug,
+      },
+    },
+  });
+
+  return response.results.length > 0;
+};
+
+/**
+ * Add new link to the notion database
+ */
+export const addLink = async (slug: string, link: string) => {
+  if (!NOTION_LINK_DATABASE_ID) {
+    throw new Error('NEXT_PUBLIC_NOTION_LINK_DATABASE_ID env is not defined');
+  }
+
+  await notion.pages.create({
+    parent: {
+      database_id: NOTION_LINK_DATABASE_ID,
+    },
+    properties: {
+      slug: {
+        type: 'title',
+        title: [
+          {
+            type: 'text',
+            text: { content: slug },
+          },
+        ],
+      },
+      link: {
+        type: 'rich_text',
+        rich_text: [
+          {
+            type: 'text',
+            text: { content: link },
+          },
+        ],
+      },
+      count: {
+        type: 'rich_text',
+        rich_text: [
+          {
+            type: 'text',
+            text: { content: '0' },
+          },
+        ],
+      },
+    },
+  });
+};

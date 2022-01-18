@@ -45,8 +45,8 @@ export default function Input({
   } = useFormContext();
 
   return (
-    <div>
-      <label htmlFor={id} className='block text-sm font-normal text-gray-700'>
+    <div className='w-full'>
+      <label htmlFor={id} className='block text-sm font-normal text-gray-200'>
         {label}
       </label>
       <div className='relative mt-1'>
@@ -59,11 +59,11 @@ export default function Input({
           readOnly={readOnly}
           className={clsx(
             readOnly
-              ? 'bg-gray-100 focus:ring-0 cursor-not-allowed border-gray-300 focus:border-gray-300'
+              ? 'bg-gray-700 focus:ring-0 cursor-not-allowed border-gray-600 focus:border-gray-600'
               : errors[id]
-              ? 'focus:ring-red-500 border-red-500 focus:border-red-500'
-              : 'focus:ring-primary-500 border-gray-300 focus:border-primary-500',
-            'block w-full rounded-md shadow-sm'
+              ? 'focus:ring-red-400 border-red-400 focus:border-red-400'
+              : 'focus:ring-primary-500 border-gray-600 focus:border-primary-500',
+            'bg-dark block w-full text-white rounded-md shadow-sm'
           )}
           placeholder={placeholder}
           aria-describedby={id}
@@ -71,14 +71,14 @@ export default function Input({
 
         {!hideError && errors[id] && (
           <div className='flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none'>
-            <HiExclamationCircle className='text-xl text-red-500' />
+            <HiExclamationCircle className='text-xl text-red-400' />
           </div>
         )}
       </div>
       <div className='mt-1'>
-        {helperText && <p className='text-xs text-gray-500'>{helperText}</p>}
+        {helperText && <p className='text-xs text-gray-300'>{helperText}</p>}
         {!hideError && errors[id] && (
-          <span className='text-sm text-red-500'>{errors[id].message}</span>
+          <span className='text-sm text-red-400'>{errors[id].message}</span>
         )}
       </div>
     </div>
