@@ -123,7 +123,7 @@
     ]
   },
   "Infer Get Static Props": {
-    "prefix": "igs",
+    "prefix": "igsp",
     "body": "InferGetStaticPropsType<typeof getStaticProps>"
   },
   "Infer Get Server Side Props": {
@@ -151,7 +151,11 @@
   },
   "Wrap with clsx": {
     "prefix": "cx",
-    "body": ["{clsx(${TM_SELECTED_TEXT})}"]
+    "body": ["{clsx(${TM_SELECTED_TEXT}$0)}"]
+  },
+  "Wrap with clsxm": {
+    "prefix": "cxm",
+    "body": ["{clsxm(${TM_SELECTED_TEXT}$0, className)}"]
   }
   //#endregion  //*======== Snippet Wrap ===========
 }
