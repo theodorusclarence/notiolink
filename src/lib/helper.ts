@@ -22,3 +22,7 @@ export function openGraph({
     ogTemplateTitle ? `&templateTitle=${ogTemplateTitle}` : ''
   }`;
 }
+
+export function trimHttps(url: string) {
+  return url.replace(/^https?:\/\//, '');
+}

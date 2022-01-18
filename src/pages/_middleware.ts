@@ -4,7 +4,6 @@ import { getUrlBySlug } from '@/lib/notion';
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname.split('/')[1];
-
   const whitelist = [
     'favicons',
     'fonts',
@@ -15,6 +14,14 @@ export default async function middleware(req: NextRequest) {
     'new',
   ];
   if (whitelist.includes(path)) {
+    return;
+  }
+
+  /** Don't redirect if /:slug/detail */
+  const isDetailPage = req.nextUrl.pathname.split('/')[2]
+    ? req.nextUrl.pathname.split('/')[2] === 'detail'
+    : false;
+  if (isDetailPage) {
     return;
   }
 
