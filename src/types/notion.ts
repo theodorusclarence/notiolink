@@ -18,7 +18,7 @@ interface TitleColumn {
 interface TextColumn {
   id: string;
   type: string;
-  rich_text: [RichText];
+  rich_text: [RichText | undefined];
 }
 
 interface RichText {
