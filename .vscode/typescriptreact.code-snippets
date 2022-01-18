@@ -80,7 +80,7 @@
     "prefix": "napi",
     "body": [
       "import { NextApiRequest, NextApiResponse } from 'next';\n",
-      "export default function ${1:${TM_FILENAME_BASE}}(req: NextApiRequest, res: NextApiResponse) {",
+      "export default async function ${1:${TM_FILENAME_BASE}}(req: NextApiRequest, res: NextApiResponse) {",
       "  if (req.method === 'GET') {",
       "    res.status(200).json({ name: 'Bambang' });",
       "  } else {",
@@ -92,7 +92,7 @@
   "Get Static Props": {
     "prefix": "gsp",
     "body": [
-      "export const getStaticProps: GetStaticProps = async (context) => {",
+      "export const getStaticProps = async (context: GetStaticPropsContext) => {",
       "  return {",
       "    props: {}",
       "  };",
@@ -115,12 +115,20 @@
   "Get Server Side Props": {
     "prefix": "gssp",
     "body": [
-      "export const getServerSideProps: GetServerSideProps = async (context) => {",
+      "export const getServerSideProps = async (context: GetServerSidePropsContext) => {",
       "  return {",
       "    props: {}",
       "  };",
       "}"
     ]
+  },
+  "Infer Get Static Props": {
+    "prefix": "igs",
+    "body": "InferGetStaticPropsType<typeof getStaticProps>"
+  },
+  "Infer Get Server Side Props": {
+    "prefix": "igssp",
+    "body": "InferGetServerSidePropsType<typeof getServerSideProps>"
   },
   "Import useRouter": {
     "prefix": "imust",
