@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -17,21 +18,39 @@ type NewLinkFormData = {
 };
 
 export default function NewLinkPage() {
+  const router = useRouter();
+
   //#region  //*=========== Form ===========
   const methods = useForm<NewLinkFormData>({
     mode: 'onTouched',
   });
-  const { handleSubmit } = methods;
+  const { handleSubmit, setValue } = methods;
   //#endregion  //*======== Form ===========
 
   //#region  //*=========== Form Submit ===========
   const onSubmit: SubmitHandler<NewLinkFormData> = (data) => {
-    toast.promise(axios.post('/api/new', data), {
-      ...DEFAULT_TOAST_MESSAGE,
-      success: 'Link successfully shortened',
-    });
+    toast.promise(
+      axios.post('/api/new', data).then(() => {
+        router.replace(`/${data.slug}/detail`);
+      }),
+      {
+        ...DEFAULT_TOAST_MESSAGE,
+        success: 'Link successfully shortened',
+      }
+    );
   };
   //#endregion  //*======== Form Submit ===========
+
+  //#region  //*=========== Set Slug Query ===========
+  React.useEffect(() => {
+    if (!router.isReady) return;
+    const query = router.query;
+
+    if (query.slug) {
+      setValue('slug', query.slug as string);
+    }
+  }, [router.isReady, router.query, setValue]);
+  //#endregion  //*======== Set Slug Query ===========
 
   return (
     <Layout>
@@ -39,7 +58,7 @@ export default function NewLinkPage() {
 
       <main>
         <section>
-          <div className='layout flex flex-col items-center py-20 min-h-screen'>
+          <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
             <h1 className='h0'>
               <Accent>Shorten New Link</Accent>
             </h1>
