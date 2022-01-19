@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import clsxm from '@/lib/clsxm';
 
-type NextImageProps = {
+export type NextImageProps = {
   useSkeleton?: boolean;
   imgClassName?: string;
   blurClassName?: string;

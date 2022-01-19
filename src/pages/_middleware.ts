@@ -17,15 +17,19 @@ export default async function middleware(req: NextRequest) {
     return;
   }
 
+  const url = await getUrlBySlug(path);
+
   /** Don't redirect if /:slug/detail */
   const isDetailPage = req.nextUrl.pathname.split('/')[2]
     ? req.nextUrl.pathname.split('/')[2] === 'detail'
     : false;
   if (isDetailPage) {
-    return;
+    if (url.link) {
+      return;
+    } else {
+      return NextResponse.redirect('/new?slug=' + path);
+    }
   }
-
-  const url = await getUrlBySlug(path);
 
   if (url.link) {
     // using fetch because edge function won't allow patch request
