@@ -1,14 +1,13 @@
 import { Client } from '@notionhq/client';
 
-import {
-  NOTION_INTEGRATION_SECRET,
-  NOTION_LINK_DATABASE_ID,
-  NOTION_TREE_DATABASE_ID,
-} from '@/lib/config';
-
 import { LinkResult, PageIcon, TreeResult } from '@/types/notion';
 
-const notion = new Client({ auth: NOTION_INTEGRATION_SECRET! });
+const NOTION_LINK_DATABASE_ID = process.env.NEXT_PUBLIC_NOTION_LINK_DATABASE_ID;
+const NOTION_TREE_DATABASE_ID = process.env.NEXT_PUBLIC_NOTION_TREE_DATABASE_ID;
+const NOTION_INTEGRATION_SECRET =
+  process.env.NEXT_PUBLIC_NOTION_INTEGRATION_SECRET;
+
+const notion = new Client({ auth: NOTION_INTEGRATION_SECRET });
 
 export type Url = {
   pageId: string;

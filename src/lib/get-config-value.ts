@@ -27,21 +27,3 @@ export function getSiteConfig(
     `Config error: missing required notiolink config value "${key}"`
   );
 }
-
-export function getEnv<T>(
-  key: string,
-  defaultValue?: T,
-  env = process.env
-): string | T {
-  const value = env[key];
-
-  if (value !== undefined) {
-    return value;
-  }
-
-  if (defaultValue !== undefined) {
-    return defaultValue;
-  }
-
-  throw new Error(`Config error: missing required env variable "${key}"`);
-}
