@@ -8,7 +8,7 @@ import {
 
 import { LinkResult, PageIcon, TreeResult } from '@/types/notion';
 
-const notion = new Client({ auth: NOTION_INTEGRATION_SECRET });
+const notion = new Client({ auth: NOTION_INTEGRATION_SECRET! });
 
 export type Url = {
   pageId: string;
