@@ -15,16 +15,33 @@ interface LinkProperties {
 export interface TreeResult {
   id: string;
   properties: TreeProperties;
+  icon: PageIcon;
 }
 
 interface TreeProperties {
-  link: TitleColumn;
-  display: TextColumn;
+  link: TextColumn;
+  display: TitleColumn;
   order: NumberColumn;
 }
 //#endregion  //*======== Social Tree ===========
 
 //#region  //*=========== Commons ===========
+interface ExternalIcon {
+  type: 'external';
+  external: {
+    url: string;
+  };
+}
+interface EmojiIcon {
+  type: 'emoji';
+  emoji: string;
+}
+interface FileIcon {
+  type: 'file';
+  file: { url: string };
+}
+export type PageIcon = ExternalIcon | EmojiIcon | FileIcon | null;
+
 interface TitleColumn {
   id: string;
   type: 'title';

@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client';
 
-import { LinkResult, TreeResult } from '@/types/notion';
+import { LinkResult, PageIcon, TreeResult } from '@/types/notion';
 
 const NOTION_LINK_DATABASE_ID = process.env.NEXT_PUBLIC_NOTION_LINK_DATABASE_ID;
 const NOTION_TREE_DATABASE_ID = process.env.NEXT_PUBLIC_NOTION_TREE_DATABASE_ID;
@@ -133,6 +133,7 @@ export type Tree = {
   link: string;
   display: string;
   order: number;
+  icon: PageIcon;
 };
 
 export const getSocialTree = async () => {
@@ -149,9 +150,10 @@ export const getSocialTree = async () => {
   const tree: Tree[] = results
     .map((result) => ({
       id: result.id,
-      link: result.properties.link.title[0]?.plain_text,
-      display: result.properties.display.rich_text[0]?.plain_text ?? '',
+      display: result.properties.display.title[0]?.plain_text,
+      link: result.properties.link.rich_text[0]?.plain_text ?? '',
       order: result.properties.order.number,
+      icon: result.icon,
     }))
     .sort((a, b) => a.order - b.order);
 
