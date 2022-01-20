@@ -1,19 +1,20 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import { appName, deployUrl, seoDescription, twitter } from '@/lib/config';
+
 const defaultMeta = {
-  title: 'Notiolink',
-  siteName: 'Notiolink',
-  description: 'A free link shortener built with Next.js and Notion API',
+  title: appName,
+  siteName: appName,
+  description: seoDescription,
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  url: 'https://notiolink.thcl.dev',
+  url: deployUrl,
   type: 'website',
   robots: 'follow, index',
-  image: 'https://notiolink.thcl.dev/favicon/og.png',
+  image: deployUrl + '/favicon/og.png',
 };
 
 type SeoProps = {
-  date?: string;
   templateTitle?: string;
 } & Partial<typeof defaultMeta>;
 
@@ -42,25 +43,10 @@ export default function Seo(props: SeoProps) {
       <meta name='image' property='og:image' content={meta.image} />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content='@th_clarence' />
+      <meta name='twitter:site' content={twitter} />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
-      {meta.date && (
-        <>
-          <meta property='article:published_time' content={meta.date} />
-          <meta
-            name='publish_date'
-            property='og:publish_date'
-            content={meta.date}
-          />
-          <meta
-            name='author'
-            property='article:author'
-            content='Theodorus Clarence'
-          />
-        </>
-      )}
 
       {/* Favicons */}
       {favicons.map((linkProps) => (

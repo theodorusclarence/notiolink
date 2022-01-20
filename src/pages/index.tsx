@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { InferGetStaticPropsType } from 'next';
 import * as React from 'react';
 
+import { appName } from '@/lib/config';
 import { getSocialTree } from '@/lib/notion';
 
 import Accent from '@/components/Accent';
@@ -21,7 +22,7 @@ export default function IndexPage({
         <section className='bg-dark'>
           <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
             <h1 className='text-5xl md:text-7xl'>
-              <Accent>Notiolink</Accent>
+              <Accent>{appName}</Accent>
             </h1>
             <div className='grid gap-4 mx-auto mt-8 w-full max-w-sm text-center'>
               {links.map(({ id, display, link, icon }) => (
