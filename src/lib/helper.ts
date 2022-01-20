@@ -26,3 +26,10 @@ export function openGraph({
 export function trimHttps(url: string) {
   return url.replace(/^https?:\/\//, '');
 }
+
+export function getFromLocalStorage(key: string) {
+  if (typeof localStorage !== 'undefined') {
+    return localStorage.getItem(key);
+  }
+  return null;
+}

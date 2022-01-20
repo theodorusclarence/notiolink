@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { addLink, checkSlugIsTaken } from '@/lib/notion';
@@ -8,11 +9,22 @@ export default async function NewLinkHandler(
 ) {
   if (req.method === 'POST') {
     const url = req.body as { link: string; slug: string };
-
     if (!url.link || !url.slug) {
       return res.status(400).json({
         message: 'Link and slug are required',
       });
+    }
+
+    let APP_TOKEN = req.headers['authorization'] as string | undefined;
+    if (!APP_TOKEN) {
+      return res.status(401).send({ message: 'Unauthorized' });
+    }
+
+    APP_TOKEN = APP_TOKEN.replace(/^Bearer\s+/, '');
+    try {
+      jwt.verify(APP_TOKEN, process.env.NEXT_PUBLIC_APP_SECRET!);
+    } catch (error) {
+      return res.status(401).send({ message: 'Unauthorized' });
     }
 
     const taken = await checkSlugIsTaken(url.slug);
