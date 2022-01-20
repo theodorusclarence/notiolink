@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { APP_SECRET } from '@/lib/config';
 import { addLink, checkSlugIsTaken } from '@/lib/notion';
 
 export default async function NewLinkHandler(
@@ -23,7 +22,7 @@ export default async function NewLinkHandler(
 
     APP_TOKEN = APP_TOKEN.replace(/^Bearer\s+/, '');
     try {
-      jwt.verify(APP_TOKEN, APP_SECRET!);
+      jwt.verify(APP_TOKEN, process.env.NEXT_PUBLIC_APP_SECRET!);
     } catch (error) {
       return res.status(401).send({ message: 'Unauthorized' });
     }

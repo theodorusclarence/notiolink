@@ -1,8 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { APP_PASSWORD, APP_SECRET } from '@/lib/config';
-
 export default async function LoginHandler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -16,13 +14,15 @@ export default async function LoginHandler(
       });
     }
 
-    if (password !== APP_PASSWORD) {
+    if (password !== process.env.NEXT_PUBLIC_APP_PASSWORD) {
       return res.status(401).json({
         message: 'Incorrect password',
       });
     }
 
-    return res.status(200).json({ token: jwt.sign({}, APP_SECRET!) });
+    return res
+      .status(200)
+      .json({ token: jwt.sign({}, process.env.NEXT_PUBLIC_APP_SECRET!) });
   } else {
     res.status(405).json({ message: 'Method Not Allowed' });
   }
