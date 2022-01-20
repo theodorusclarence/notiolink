@@ -8,6 +8,7 @@ import { getSocialTree } from '@/lib/notion';
 
 import Accent from '@/components/Accent';
 import Layout from '@/components/layout/Layout';
+import UnderlineLink from '@/components/links/UnderlineLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
 
@@ -72,6 +73,13 @@ export default function IndexPage({
                 </div>
               ))}
             </div>
+            {/* Thank you for not removing this as an attribution 🙏 */}
+            <p className='mt-10 text-gray-300'>
+              Built using{' '}
+              <UnderlineLink href='https://github.com/theodorusclarence/notiolink'>
+                <Accent>Notiolink</Accent>
+              </UnderlineLink>
+            </p>
           </div>
         </section>
       </main>
