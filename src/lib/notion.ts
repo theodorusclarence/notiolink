@@ -1,8 +1,9 @@
 import { Client } from '@notionhq/client';
 
-import { LinkResult } from '@/types/notion';
+import { LinkResult, TreeResult } from '@/types/notion';
 
 const NOTION_LINK_DATABASE_ID = process.env.NEXT_PUBLIC_NOTION_LINK_DATABASE_ID;
+const NOTION_TREE_DATABASE_ID = process.env.NEXT_PUBLIC_NOTION_TREE_DATABASE_ID;
 const NOTION_INTEGRATION_SECRET =
   process.env.NEXT_PUBLIC_NOTION_INTEGRATION_SECRET;
 
@@ -125,4 +126,34 @@ export const addLink = async (slug: string, link: string) => {
       },
     },
   });
+};
+
+export type Tree = {
+  id: string;
+  link: string;
+  display: string;
+  order: number;
+};
+
+export const getSocialTree = async () => {
+  if (!NOTION_TREE_DATABASE_ID) {
+    throw new Error('NEXT_PUBLIC_NOTION_TREE_DATABASE_ID env is not defined');
+  }
+
+  const response = await notion.databases.query({
+    database_id: NOTION_TREE_DATABASE_ID,
+  });
+
+  const results = response.results as unknown as TreeResult[];
+
+  const tree: Tree[] = results
+    .map((result) => ({
+      id: result.id,
+      link: result.properties.link.title[0]?.plain_text,
+      display: result.properties.display.rich_text[0]?.plain_text ?? '',
+      order: result.properties.order.number,
+    }))
+    .sort((a, b) => a.order - b.order);
+
+  return tree;
 };
