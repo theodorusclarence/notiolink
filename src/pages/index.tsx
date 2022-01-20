@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import clsx from 'clsx';
 import { InferGetStaticPropsType } from 'next';
 import * as React from 'react';
@@ -23,7 +24,7 @@ export default function IndexPage({
               <Accent>Notiolink</Accent>
             </h1>
             <div className='grid gap-4 mx-auto mt-8 w-full max-w-sm text-center'>
-              {links.map(({ id, display, link }) => (
+              {links.map(({ id, display, link, icon }) => (
                 <div className='group relative' key={id}>
                   <div
                     className={clsx(
@@ -39,13 +40,32 @@ export default function IndexPage({
                     key={id}
                     href={link}
                     className={clsx(
-                      'block relative',
+                      'flex relative gap-2 justify-center items-center',
                       'px-4 py-4 font-medium transition-colors md:text-lg ',
                       'bg-dark',
                       'border border-gray-600',
                       'focus:outline-none focus-visible:ring focus-visible:ring-primary-500'
                     )}
                   >
+                    {icon ? (
+                      icon.type === 'emoji' ? (
+                        icon.emoji + ' '
+                      ) : icon.type === 'external' ? (
+                        <img
+                          src={icon.external.url}
+                          width={20}
+                          height={20}
+                          alt={`${display} Icon`}
+                        />
+                      ) : (
+                        <img
+                          src={icon.file.url}
+                          width={20}
+                          height={20}
+                          alt={`${display} Icon`}
+                        />
+                      )
+                    ) : null}
                     {display}
                   </UnstyledLink>
                 </div>
