@@ -4,7 +4,7 @@ module.exports = {
 
   /** Description for SEO */
   seoDescription:
-    'Self-hostable Link Shortener with Next.js Edge Functions & Notion API',
+    'Self-hostable branded link shortener built with Next.js & Notion API',
   /** Twitter account for SEO */
   twitter: '@th_clarence',
 
