@@ -4,6 +4,9 @@ import * as React from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
+import { getFromLocalStorage } from '@/lib/helper';
+import useLoadingToast from '@/hooks/toast/useLoadingToast';
+
 import Accent from '@/components/Accent';
 import Button from '@/components/buttons/Button';
 import Input from '@/components/forms/Input';
@@ -19,6 +22,17 @@ type NewLinkFormData = {
 
 export default function NewLinkPage() {
   const router = useRouter();
+  const isLoading = useLoadingToast();
+
+  //#region  //*=========== Check Auth ===========
+  const token = getFromLocalStorage('@notiolink/app_token');
+  React.useEffect(() => {
+    if (!token) {
+      toast.error('Missing token, please login first');
+      router.replace('/login');
+    }
+  }, [router, token]);
+  //#endregion  //*======== Check Auth ===========
 
   //#region  //*=========== Form ===========
   const methods = useForm<NewLinkFormData>({
@@ -29,15 +43,28 @@ export default function NewLinkPage() {
 
   //#region  //*=========== Form Submit ===========
   const onSubmit: SubmitHandler<NewLinkFormData> = (data) => {
-    toast.promise(
-      axios.post('/api/new', data).then(() => {
-        router.replace(`/${data.slug}/detail`);
-      }),
-      {
-        ...DEFAULT_TOAST_MESSAGE,
-        success: 'Link successfully shortened',
-      }
-    );
+    toast
+      .promise(
+        axios
+          .post('/api/new', data, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(() => {
+            router.replace(`/${data.slug}/detail`);
+          }),
+        {
+          ...DEFAULT_TOAST_MESSAGE,
+          success: 'Link successfully shortened',
+        }
+      )
+      .catch((err: { response: { status: number } }) => {
+        if (err.response.status === 401) {
+          toast.error('Token expired, please login again');
+          router.replace('/login');
+        }
+      });
   };
   //#endregion  //*======== Form Submit ===========
 
@@ -63,6 +90,18 @@ export default function NewLinkPage() {
               <Accent>Shorten New Link</Accent>
             </h1>
 
+            <Button
+              className='absolute top-8 right-8'
+              onClick={() => {
+                localStorage.removeItem('@notiolink/app_token');
+                router.push('/');
+              }}
+              variant='outline'
+              isDarkBg
+            >
+              Logout
+            </Button>
+
             <FormProvider {...methods}>
               <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -73,6 +112,7 @@ export default function NewLinkPage() {
                     id='slug'
                     label='Slug'
                     placeholder='slug'
+                    autoFocus
                     validation={{
                       required: 'Slug must be filled',
                       pattern: {
@@ -103,6 +143,7 @@ export default function NewLinkPage() {
                     variant='outline'
                     isDarkBg
                     type='submit'
+                    isLoading={isLoading}
                   >
                     Shorten!
                   </Button>
