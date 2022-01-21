@@ -10,6 +10,8 @@ import useRQWithToast from '@/hooks/toast/useRQWithToast';
 import Accent from '@/components/Accent';
 import Favicon from '@/components/Favicon';
 import Layout from '@/components/layout/Layout';
+import ArrowLink from '@/components/links/ArrowLink';
+import PrimaryLink from '@/components/links/PrimaryLink';
 import Seo from '@/components/Seo';
 import Skeleton from '@/components/Skeleton';
 import CopyBox from '@/container/CopyBox';
@@ -82,6 +84,10 @@ export default function DetailPage() {
                 </span>
               </div>
             </div>
+
+            <ArrowLink href='/new' className='mt-8' as={PrimaryLink}>
+              <Accent>Shorten another</Accent>
+            </ArrowLink>
           </div>
         </section>
       </main>
