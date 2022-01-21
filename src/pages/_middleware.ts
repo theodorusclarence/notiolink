@@ -24,14 +24,19 @@ export default async function middleware(req: NextRequest) {
   }
 
   if (url.link) {
-    // using fetch because edge function won't allow patch request
-    await fetch(req.nextUrl.origin + '/api/increment', {
-      method: 'POST',
-      body: JSON.stringify(url),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    try {
+      // using fetch because edge function won't allow patch request
+      await fetch(req.nextUrl.origin + '/api/increment', {
+        method: 'POST',
+        body: JSON.stringify(url),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('/api/increment:', { error });
+    }
 
     return NextResponse.redirect(url.link);
   }
