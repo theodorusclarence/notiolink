@@ -9,7 +9,6 @@ import { getSocialTree } from '@/lib/notion';
 import Accent from '@/components/Accent';
 import Layout from '@/components/layout/Layout';
 import UnderlineLink from '@/components/links/UnderlineLink';
-import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
 
 export default function IndexPage({
@@ -33,13 +32,12 @@ export default function IndexPage({
                       'opacity-0 group-hover:opacity-100',
                       'animate-tilt absolute -inset-0.5 z-0 rounded blur',
                       'bg-gradient-to-r from-emerald-400 to-amber-400',
-                      'transition duration-300 group-hover:duration-200'
+                      'transition duration-300 group-hover:duration-200',
+                      'pointer-events-none'
                     )}
                   />
 
-                  <UnstyledLink
-                    openNewTab={false}
-                    key={id}
+                  <a
                     href={link}
                     className={clsx(
                       'flex relative gap-2 justify-center items-center',
@@ -69,7 +67,7 @@ export default function IndexPage({
                       )
                     ) : null}
                     {display}
-                  </UnstyledLink>
+                  </a>
                 </div>
               ))}
             </div>
