@@ -1,13 +1,13 @@
 module.exports = {
   /** Application Name, will be shown on the index page */
-  appName: 'Notiolink',
+  appName: 'Jessica',
 
   /** Description for SEO */
   seoDescription:
     'Self-hostable branded link shortener built with Next.js & Notion API',
   /** Twitter account for SEO */
-  twitter: '@th_clarence',
+  twitter: '',
 
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
-  deployUrl: 'https://notiolink.thcl.dev',
+  deployUrl: 'https://jessica.vercel.app',
 };
