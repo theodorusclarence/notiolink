@@ -21,7 +21,7 @@ export default function IndexPage({
       <main>
         <section className='bg-dark'>
           <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
-            <h1 className='text-5xl md:text-7xl'>
+            <h1 className='text-5xl text-center md:text-7xl'>
               <Accent>{appName}</Accent>
             </h1>
             <div className='grid gap-4 mx-auto mt-8 w-full max-w-sm text-center'>
@@ -31,7 +31,7 @@ export default function IndexPage({
                     className={clsx(
                       'opacity-0 group-hover:opacity-100',
                       'animate-tilt absolute -inset-0.5 z-0 rounded blur',
-                      'bg-gradient-to-r from-emerald-400 to-amber-400',
+                      'bg-gradient-to-r from-rose-400 to-pink-300',
                       'transition duration-300 group-hover:duration-200',
                       'pointer-events-none'
                     )}
