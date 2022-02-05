@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { appName, deployUrl, seoDescription, twitter } from '@/lib/config';
+import { appName, deployUrl, seoDescription } from '@/lib/config';
 
 const defaultMeta = {
   title: appName,
@@ -43,7 +43,6 @@ export default function Seo(props: SeoProps) {
       <meta name='image' property='og:image' content={meta.image} />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content={twitter} />
       <meta name='twitter:title' content={meta.title} />
       <meta name='twitter:description' content={meta.description} />
       <meta name='twitter:image' content={meta.image} />
