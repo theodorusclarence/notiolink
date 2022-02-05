@@ -22,7 +22,7 @@ export default function CopyBox({ className, link, ...rest }: CopyBoxProps) {
       {...rest}
     >
       <div className='flex-grow text-left'>
-        <PrimaryLink href={link} className='text-lg'>
+        <PrimaryLink href={"https://" + link} className='text-lg'>
           {trimHttps(link)}
         </PrimaryLink>
       </div>
