@@ -54,7 +54,7 @@ export default function DetailPage() {
             </h1>
 
             {link ? (
-              <QRCode link={link} className='mt-8' />
+              <QRCode link={`https://${link}`} className='mt-8' />
             ) : (
               <Skeleton className='mt-8 w-64 h-64' />
             )}
