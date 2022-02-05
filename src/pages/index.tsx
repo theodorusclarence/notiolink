@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import clsx from 'clsx';
 import { InferGetStaticPropsType } from 'next';
 import * as React from 'react';
 
@@ -8,7 +7,8 @@ import { getSocialTree } from '@/lib/notion';
 
 import Accent from '@/components/Accent';
 import Layout from '@/components/layout/Layout';
-import UnderlineLink from '@/components/links/UnderlineLink';
+import PrimaryLink from '@/components/links/PrimaryLink';
+import TreeLink from '@/components/links/TreeLink';
 import Seo from '@/components/Seo';
 
 export default function IndexPage({
@@ -19,64 +19,22 @@ export default function IndexPage({
       <Seo />
 
       <main>
-        <section className='bg-dark'>
+        <section className=''>
           <div className='layout flex min-h-screen flex-col items-center justify-center py-20'>
-            <h1 className='text-5xl md:text-7xl'>
+            <h1 className='text-center text-5xl md:text-7xl'>
               <Accent>{appName}</Accent>
             </h1>
             <div className='mx-auto mt-8 grid w-full max-w-sm gap-4 text-center'>
-              {links.map(({ id, display, link, icon }) => (
-                <div className='group relative' key={id}>
-                  <div
-                    className={clsx(
-                      'opacity-0 group-hover:opacity-100',
-                      'absolute -inset-0.5 z-0 animate-tilt rounded blur',
-                      'accent-gradient bg-gradient-to-r',
-                      'transition duration-300 group-hover:duration-200',
-                      'pointer-events-none'
-                    )}
-                  />
-
-                  <a
-                    href={link}
-                    className={clsx(
-                      'relative flex items-center justify-center gap-2',
-                      'px-4 py-4 font-medium transition-colors md:text-lg ',
-                      'bg-dark',
-                      'border border-gray-600',
-                      'focus:outline-none focus-visible:ring focus-visible:ring-primary-500'
-                    )}
-                  >
-                    {icon ? (
-                      icon.type === 'emoji' ? (
-                        icon.emoji + ' '
-                      ) : icon.type === 'external' ? (
-                        <img
-                          src={icon.external.url}
-                          width={20}
-                          height={20}
-                          alt={`${display} Icon`}
-                        />
-                      ) : (
-                        <img
-                          src={icon.file.url}
-                          width={20}
-                          height={20}
-                          alt={`${display} Icon`}
-                        />
-                      )
-                    ) : null}
-                    {display}
-                  </a>
-                </div>
+              {links.map((link) => (
+                <TreeLink key={link.id} link={link} />
               ))}
             </div>
             {/* Thank you for not removing this as an attribution 🙏 */}
-            <p className='mt-10 text-gray-300'>
+            <p className='mt-10 dark:text-gray-300'>
               Built using{' '}
-              <UnderlineLink href='https://github.com/theodorusclarence/notiolink'>
+              <PrimaryLink href='https://github.com/theodorusclarence/notiolink'>
                 <Accent>Notiolink</Accent>
-              </UnderlineLink>
+              </PrimaryLink>
             </p>
           </div>
         </section>

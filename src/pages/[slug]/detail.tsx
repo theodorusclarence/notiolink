@@ -73,13 +73,13 @@ export default function DetailPage() {
                 ) : (
                   <Skeleton className='h-5 w-5' />
                 )}
-                <div className='w-full max-w-sm break-all font-medium text-gray-300'>
+                <div className='w-full max-w-sm break-all font-medium text-gray-600 dark:text-gray-300'>
                   {url?.link ? url.link : <Skeleton className='h-5 w-64' />}
                 </div>
               </div>
               <div className='mt-2 flex items-center gap-4'>
                 <HiCursorClick className='h-5 w-5' />
-                <span className='font-medium text-gray-300'>
+                <span className='font-medium text-gray-600 dark:text-gray-300'>
                   {url?.count ?? '—'} click{(url?.count ?? 0) > 1 && 's'}
                 </span>
               </div>
