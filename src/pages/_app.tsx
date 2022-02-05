@@ -7,6 +7,7 @@ import '@/styles/globals.css';
 import axiosClient from '@/lib/axios';
 
 import DismissableToast from '@/components/DismissableToast';
+import Layout from '@/components/layout/Layout';
 
 const defaultQueryFn = async ({ queryKey }: QueryOptions) => {
   const { data } = await axiosClient.get(`${queryKey?.[0]}`);
@@ -25,7 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <DismissableToast />
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
       <ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
     </QueryClientProvider>
   );

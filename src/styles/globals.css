@@ -112,3 +112,9 @@
     background-size: 0 2px, 100% 2px;
   }
 }
+
+/* #region  /**=========== Default Theme =========== */
+.default .accent-gradient {
+  @apply from-emerald-400 to-amber-400;
+}
+/* #endregion  /**======== Default Theme =========== */

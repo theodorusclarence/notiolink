@@ -31,7 +31,7 @@ export default function IndexPage({
                     className={clsx(
                       'opacity-0 group-hover:opacity-100',
                       'absolute -inset-0.5 z-0 animate-tilt rounded blur',
-                      'bg-gradient-to-r from-emerald-400 to-amber-400',
+                      'accent-gradient bg-gradient-to-r',
                       'transition duration-300 group-hover:duration-200',
                       'pointer-events-none'
                     )}
