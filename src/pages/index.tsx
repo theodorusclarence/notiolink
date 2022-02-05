@@ -20,17 +20,17 @@ export default function IndexPage({
 
       <main>
         <section className='bg-dark'>
-          <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
+          <div className='layout flex min-h-screen flex-col items-center justify-center py-20'>
             <h1 className='text-5xl md:text-7xl'>
               <Accent>{appName}</Accent>
             </h1>
-            <div className='grid gap-4 mx-auto mt-8 w-full max-w-sm text-center'>
+            <div className='mx-auto mt-8 grid w-full max-w-sm gap-4 text-center'>
               {links.map(({ id, display, link, icon }) => (
                 <div className='group relative' key={id}>
                   <div
                     className={clsx(
                       'opacity-0 group-hover:opacity-100',
-                      'animate-tilt absolute -inset-0.5 z-0 rounded blur',
+                      'absolute -inset-0.5 z-0 animate-tilt rounded blur',
                       'bg-gradient-to-r from-emerald-400 to-amber-400',
                       'transition duration-300 group-hover:duration-200',
                       'pointer-events-none'
@@ -40,7 +40,7 @@ export default function IndexPage({
                   <a
                     href={link}
                     className={clsx(
-                      'flex relative gap-2 justify-center items-center',
+                      'relative flex items-center justify-center gap-2',
                       'px-4 py-4 font-medium transition-colors md:text-lg ',
                       'bg-dark',
                       'border border-gray-600',

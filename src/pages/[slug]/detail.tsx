@@ -48,7 +48,7 @@ export default function DetailPage() {
 
       <main>
         <section className=''>
-          <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
+          <div className='layout flex min-h-screen flex-col items-center justify-center py-20'>
             <h1 className='h0'>
               <Accent>Link Details</Accent>
             </h1>
@@ -56,29 +56,29 @@ export default function DetailPage() {
             {link ? (
               <QRCode link={`https://${link}`} className='mt-8' />
             ) : (
-              <Skeleton className='mt-8 w-64 h-64' />
+              <Skeleton className='mt-8 h-64 w-64' />
             )}
 
             {link ? (
               <CopyBox link={link} className='mt-8' />
             ) : (
-              <Skeleton className='mt-8 w-72 h-14 rounded' />
+              <Skeleton className='mt-8 h-14 w-72 rounded' />
             )}
 
             <div className='mt-6'>
               <h2 className='h4'>Detail</h2>
-              <div className='flex gap-4 items-center mt-2'>
+              <div className='mt-2 flex items-center gap-4'>
                 {url?.link ? (
                   <Favicon fullUrl={url.link} />
                 ) : (
-                  <Skeleton className='w-5 h-5' />
+                  <Skeleton className='h-5 w-5' />
                 )}
-                <div className='w-full max-w-sm font-medium text-gray-300 break-all'>
-                  {url?.link ? url.link : <Skeleton className='w-64 h-5' />}
+                <div className='w-full max-w-sm break-all font-medium text-gray-300'>
+                  {url?.link ? url.link : <Skeleton className='h-5 w-64' />}
                 </div>
               </div>
-              <div className='flex gap-4 items-center mt-2'>
-                <HiCursorClick className='w-5 h-5' />
+              <div className='mt-2 flex items-center gap-4'>
+                <HiCursorClick className='h-5 w-5' />
                 <span className='font-medium text-gray-300'>
                   {url?.count ?? '—'} click{(url?.count ?? 0) > 1 && 's'}
                 </span>
