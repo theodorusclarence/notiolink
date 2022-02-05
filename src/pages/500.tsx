@@ -11,7 +11,7 @@ export default function ErrorPage() {
 
       <main>
         <section className=''>
-          <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
+          <div className='layout flex min-h-screen flex-col items-center justify-center py-20'>
             <h1 className='text-5xl md:text-7xl'>
               <Accent>Error occurred</Accent>
             </h1>

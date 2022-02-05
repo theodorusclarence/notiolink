@@ -59,18 +59,18 @@ export default function Input({
           readOnly={readOnly}
           className={clsx(
             readOnly
-              ? 'bg-gray-700 focus:ring-0 cursor-not-allowed border-gray-600 focus:border-gray-600'
+              ? 'cursor-not-allowed border-gray-600 bg-gray-700 focus:border-gray-600 focus:ring-0'
               : errors[id]
-              ? 'focus:ring-red-400 border-red-400 focus:border-red-400'
-              : 'focus:ring-primary-500 border-gray-600 focus:border-primary-500',
-            'bg-dark block w-full text-white rounded-md shadow-sm'
+              ? 'border-red-400 focus:border-red-400 focus:ring-red-400'
+              : 'border-gray-600 focus:border-primary-500 focus:ring-primary-500',
+            'block w-full rounded-md bg-dark text-white shadow-sm'
           )}
           placeholder={placeholder}
           aria-describedby={id}
         />
 
         {!hideError && errors[id] && (
-          <div className='flex absolute inset-y-0 right-0 items-center pr-3 pointer-events-none'>
+          <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3'>
             <HiExclamationCircle className='text-xl text-red-400' />
           </div>
         )}

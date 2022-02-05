@@ -85,7 +85,7 @@ export default function NewLinkPage() {
 
       <main>
         <section>
-          <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
+          <div className='layout flex min-h-screen flex-col items-center justify-center py-20'>
             <h1 className='h0'>
               <Accent>Shorten New Link</Accent>
             </h1>
@@ -137,9 +137,9 @@ export default function NewLinkPage() {
                   />
                 </div>
 
-                <div className='flex flex-col mt-5'>
+                <div className='mt-5 flex flex-col'>
                   <Button
-                    className='justify-center w-full md:ml-auto md:w-auto'
+                    className='w-full justify-center md:ml-auto md:w-auto'
                     variant='outline'
                     isDarkBg
                     type='submit'

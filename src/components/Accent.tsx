@@ -9,7 +9,7 @@ export default function Accent({ children, className }: AccentType) {
     <span
       className={clsxm(
         'transition-colors',
-        'text-transparent bg-clip-text bg-gradient-to-tr from-emerald-400 to-amber-400',
+        'bg-gradient-to-tr from-emerald-400 to-amber-400 bg-clip-text text-transparent',
         className
       )}
     >
