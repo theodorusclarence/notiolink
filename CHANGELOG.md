@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/theodorusclarence/notiolink/compare/v0.1.0...v0.1.1) (2022-02-05)
+
+
+### Bug Fixes
+
+* qr code link error ([ad1ca40](https://github.com/theodorusclarence/notiolink/commit/ad1ca40ca2c6d005ab64ff3ff2c773d9ec53f651))
+
 ## 0.1.0 (2022-01-23)
 
 
