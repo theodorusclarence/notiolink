@@ -4,3 +4,4 @@ import { getSiteConfig } from '@/lib/get-config-value';
 export const appName = getSiteConfig('appName');
 export const seoDescription = getSiteConfig('seoDescription');
 export const deployUrl = getSiteConfig('deployUrl');
+export const demoMode = getSiteConfig('demoMode');

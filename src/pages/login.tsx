@@ -76,7 +76,6 @@ export default function NewLinkPage() {
                     isLoading={isLoading}
                     className='w-full justify-center md:ml-auto md:w-auto'
                     variant='outline'
-                    isDarkBg
                     type='submit'
                   >
                     Login!

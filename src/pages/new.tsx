@@ -97,7 +97,6 @@ export default function NewLinkPage() {
                 router.push('/');
               }}
               variant='outline'
-              isDarkBg
             >
               Logout
             </Button>
@@ -108,19 +107,6 @@ export default function NewLinkPage() {
                 className='mt-8 w-full max-w-sm'
               >
                 <div className='space-y-4'>
-                  <Input
-                    id='slug'
-                    label='Slug'
-                    placeholder='slug'
-                    autoFocus
-                    validation={{
-                      required: 'Slug must be filled',
-                      pattern: {
-                        value: /^\S+$/,
-                        message: 'Cannot include whitespace',
-                      },
-                    }}
-                  />
                   <Input
                     id='link'
                     label='Link'
@@ -135,13 +121,25 @@ export default function NewLinkPage() {
                       },
                     }}
                   />
+                  <Input
+                    id='slug'
+                    label='Slug'
+                    placeholder='slug'
+                    autoFocus
+                    validation={{
+                      required: 'Slug must be filled',
+                      pattern: {
+                        value: /^\S+$/,
+                        message: 'Cannot include whitespace',
+                      },
+                    }}
+                  />
                 </div>
 
                 <div className='mt-5 flex flex-col'>
                   <Button
                     className='w-full justify-center md:ml-auto md:w-auto'
                     variant='outline'
-                    isDarkBg
                     type='submit'
                     isLoading={isLoading}
                   >

@@ -13,7 +13,9 @@ function withOpacity(variableName) {
 /** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  darkMode: 'class',
   theme: {
+    themeVariants: ['light', 'milky'],
     extend: {
       fontFamily: {
         primary: ['Inter', ...fontFamily.sans],
@@ -31,6 +33,12 @@ module.exports = {
           700: withOpacity('--tw-clr-primary-700'),
           800: withOpacity('--tw-clr-primary-800'),
           900: withOpacity('--tw-clr-primary-900'),
+        },
+        milky: {
+          50: withOpacity('--tw-clr-milky-50'),
+          100: withOpacity('--tw-clr-milky-100'),
+          400: withOpacity('--tw-clr-milky-400'),
+          500: withOpacity('--tw-clr-milky-500'),
         },
         dark: '#222222',
       },
@@ -64,5 +72,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('tailwindcss-multi-theme')],
 };
