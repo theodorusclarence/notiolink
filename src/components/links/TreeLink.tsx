@@ -6,7 +6,7 @@ import clsxm from '@/lib/clsxm';
 import { Tree } from '@/lib/notion';
 
 type TreeLinkProps = {
-  link: Tree;
+  link: Pick<Tree, 'display' | 'link' | 'icon'>;
 } & React.ComponentPropsWithoutRef<'div'>;
 
 export default function TreeLink({

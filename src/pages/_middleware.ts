@@ -4,7 +4,16 @@ import { getUrlBySlug } from '@/lib/notion';
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname.split('/')[1];
-  const whitelist = ['favicons', 'fonts', 'images', 'svg', '', 'login', 'new'];
+  const whitelist = [
+    'favicons',
+    'fonts',
+    'images',
+    'svg',
+    '',
+    'login',
+    'new',
+    'c',
+  ];
   if (whitelist.includes(path)) {
     return;
   }
