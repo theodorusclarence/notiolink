@@ -25,6 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <option value='dark'>dark</option>
             <option value='theme-milky'>milky</option>
             <option value='theme-street dark'>street</option>
+            <option value='theme-monokai dark'>monokai</option>
           </select>
         )}
         {children}

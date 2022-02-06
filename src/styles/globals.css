@@ -27,6 +27,8 @@
   --clr-primary-900: rgb(var(--tw-clr-primary-900)); /* #064e3b */
   /* #endregion  /**======== Primary Color =========== */
 
+  --tw-clr-dark: 34, 34, 34; /* #222222 */
+
   --tw-clr-milky-50: 255, 246, 233; /* #fff6e9 */
   --tw-clr-milky-100: 255, 245, 227; /* #fff5e3 */
   --tw-clr-milky-400: 129, 100, 82; /* #81644a */
@@ -35,6 +37,10 @@
   --tw-clr-street-400: 184, 105, 255; /* #b869ff */
   --tw-clr-street-500: 104, 107, 253; /* #686afd */
   --tw-clr-street-800: 1, 22, 39; /* #011627 */
+
+  --tw-clr-monokai-400: 249, 38, 114; /* #f92672 */
+  --tw-clr-monokai-500: 102, 217, 239; /* #66d9ef */
+  --tw-clr-monokai-800: 39, 40, 34; /* #272822 */
 }
 
 @layer base {
@@ -127,5 +133,15 @@
 }
 .theme-street .accent-gradient {
   @apply from-street-400 to-street-500;
+}
+
+.theme-monokai {
+  --tw-clr-primary-400: var(--tw-clr-monokai-400);
+  --tw-clr-primary-500: var(--tw-clr-monokai-500);
+  --tw-clr-primary-800: var(--tw-clr-monokai-800);
+  --tw-clr-dark: var(--tw-clr-monokai-800);
+}
+.theme-monokai .accent-gradient {
+  @apply from-monokai-400 via-[#7649f3] to-monokai-500;
 }
 /* #endregion  /**======== Theme =========== */
