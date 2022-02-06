@@ -15,7 +15,7 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
-    themeVariants: ['light', 'milky', 'street'],
+    themeVariants: ['light', 'milky', 'street', 'monokai'],
     extend: {
       fontFamily: {
         primary: ['Inter', ...fontFamily.sans],
@@ -45,7 +45,12 @@ module.exports = {
           500: withOpacity('--tw-clr-street-500'),
           800: withOpacity('--tw-clr-street-800'),
         },
-        dark: '#222222',
+        monokai: {
+          400: withOpacity('--tw-clr-monokai-400'),
+          500: withOpacity('--tw-clr-monokai-500'),
+          800: withOpacity('--tw-clr-monokai-800'),
+        },
+        dark: withOpacity('--tw-clr-dark'),
       },
       keyframes: {
         flicker: {
