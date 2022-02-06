@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/theodorusclarence/notiolink/compare/v0.2.0...v0.3.0) (2022-02-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* add category tree
+
+### Features
+
+* add category tree ([7b72869](https://github.com/theodorusclarence/notiolink/commit/7b72869c55c9aaf31cd1abe7c7ff3fee6e0e8fc4))
+
 ## [0.2.0](https://github.com/theodorusclarence/notiolink/compare/v0.1.1...v0.2.0) (2022-02-06)
 
 
