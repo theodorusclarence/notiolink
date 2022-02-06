@@ -31,6 +31,10 @@
   --tw-clr-milky-100: 255, 245, 227; /* #fff5e3 */
   --tw-clr-milky-400: 129, 100, 82; /* #81644a */
   --tw-clr-milky-500: 112, 77, 55; /* #70554f */
+
+  --tw-clr-street-400: 184, 105, 255; /* #b869ff */
+  --tw-clr-street-500: 104, 107, 253; /* #686afd */
+  --tw-clr-street-800: 1, 22, 39; /* #011627 */
 }
 
 @layer base {
@@ -114,5 +118,14 @@
 }
 .theme-milky .accent-gradient {
   @apply from-milky-400 to-milky-500;
+}
+
+.theme-street {
+  --tw-clr-primary-400: var(--tw-clr-street-400);
+  --tw-clr-primary-500: var(--tw-clr-street-500);
+  --tw-clr-primary-800: var(--tw-clr-street-800);
+}
+.theme-street .accent-gradient {
+  @apply from-street-400 to-street-500;
 }
 /* #endregion  /**======== Theme =========== */
