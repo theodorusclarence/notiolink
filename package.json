@@ -47,6 +47,7 @@
     "@types/react": "^17.0.38",
     "@types/react-copy-to-clipboard": "^5.0.2",
     "@types/tailwindcss": "^2.2.4",
+    "@types/umami": "^0.1.0",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "autoprefixer": "^10.4.2",

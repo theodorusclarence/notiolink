@@ -2,6 +2,7 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
+import { trackEvent } from '@/lib/analytics';
 import clsxm from '@/lib/clsxm';
 import { Tree } from '@/lib/notion';
 
@@ -30,6 +31,10 @@ export default function TreeLink({
 
       <a
         href={link}
+        onClick={() => {
+          trackEvent(display, 'link');
+          return true;
+        }}
         className={clsx(
           'relative flex items-center justify-center gap-2',
           'px-4 py-4 font-medium transition-colors md:text-lg',
