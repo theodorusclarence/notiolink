@@ -1,10 +1,18 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-import { demoMode } from '@/lib/config';
+import { demoMode, theme as configTheme } from '@/lib/config';
+
+export const themeColor = {
+  light: 'light',
+  dark: 'dark',
+  milky: 'theme-milky',
+  street: 'theme-street dark',
+  monokai: 'theme-monokai dark',
+};
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = React.useState('dark');
+  const [theme, setTheme] = React.useState(themeColor[configTheme]);
 
   return (
     <div className={theme}>
@@ -14,18 +22,18 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           'milky:bg-[#fff5e3] street:bg-street-800'
         )}
       >
-        {demoMode && (
+        {demoMode === 'true' && (
           <select
             name='theme'
             className='fixed top-4 left-4 rounded bg-transparent'
             value={theme}
             onChange={(e) => setTheme(e.target.value)}
           >
-            <option value='light'>light</option>
-            <option value='dark'>dark</option>
-            <option value='theme-milky'>milky</option>
-            <option value='theme-street dark'>street</option>
-            <option value='theme-monokai dark'>monokai</option>
+            {Object.entries(themeColor).map(([theme, themeClass]) => (
+              <option key={theme} value={themeClass}>
+                {theme}
+              </option>
+            ))}
           </select>
         )}
         {children}
