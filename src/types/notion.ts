@@ -8,6 +8,7 @@ interface LinkProperties {
   count: TextColumn;
   link: TextColumn;
   slug: TitleColumn;
+  categories: MultiSelectColumn;
 }
 //#endregion  //*======== Links ===========
 
@@ -58,6 +59,13 @@ interface NumberColumn {
   id: string;
   type: 'number';
   number: number;
+}
+
+interface MultiSelectColumn {
+  id: string;
+  multi_select: {
+    options: Array<{ name: string }>;
+  };
 }
 
 interface RichText {
