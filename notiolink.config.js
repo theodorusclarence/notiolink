@@ -9,6 +9,12 @@ module.exports = {
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   deployUrl: 'https://notiolink.thcl.dev',
 
-  /** Make this to false  */
+  /**
+   * Color theme for the app
+   * @type {'light' | 'dark' | 'milky' | 'street' | 'monokai'}
+   */
+  theme: 'dark',
+
+  /** REQUIRED CONFIG: Set this to 'false'  */
   demoMode: 'true',
 };
