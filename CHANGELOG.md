@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/theodorusclarence/notiolink/compare/v0.1.1...v0.2.0) (2022-02-06)
+
+
+### Features
+
+* add customizable gradient ([a4e64b2](https://github.com/theodorusclarence/notiolink/commit/a4e64b250693369dc9bbc98dbab6b6b74c253f5c))
+* add monokai theme ([04deb21](https://github.com/theodorusclarence/notiolink/commit/04deb212e20cd5727156b0aa8bf63ef2c73203e7))
+* add notiolink config for theme ([3c9bf0d](https://github.com/theodorusclarence/notiolink/commit/3c9bf0d02767ddde3bf3a7bd788178814e17196c))
+* add street theme ([abfa0a1](https://github.com/theodorusclarence/notiolink/commit/abfa0a1f2614efbfe858d1b6cc77de607c4c9835))
+* add theme changer ([fbdacd0](https://github.com/theodorusclarence/notiolink/commit/fbdacd04fa14f0f5eca87cbc6ac9e2143354f53d))
+* optional twitter handle ([dd07db2](https://github.com/theodorusclarence/notiolink/commit/dd07db20068df5949c605420aac454aa0e061aa2))
+
 ### [0.1.1](https://github.com/theodorusclarence/notiolink/compare/v0.1.0...v0.1.1) (2022-02-05)
 
 
