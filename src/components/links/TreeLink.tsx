@@ -23,7 +23,8 @@ export default function TreeLink({
           'accent-gradient bg-gradient-to-r',
           'transition duration-300 group-hover:duration-200',
           'milky:rounded-full',
-          'pointer-events-none'
+          'pointer-events-none',
+          'street:group-hover:animate-flickerStreet'
         )}
       />
 
@@ -36,7 +37,8 @@ export default function TreeLink({
           'focus:outline-none focus-visible:ring focus-visible:ring-primary-500',
           'border-gray-400 bg-white',
           'dark:border-gray-600 dark:bg-dark',
-          'milky:rounded-full milky:bg-milky-100 milky:text-milky-500'
+          'milky:rounded-full milky:bg-milky-100 milky:text-milky-500',
+          'street:bg-street-800'
         )}
       >
         {icon ? (

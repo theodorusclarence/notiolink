@@ -9,7 +9,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={theme}>
       <div
-        className={clsx('dark:bg-dark dark:text-white', 'milky:bg-[#fff5e3]')}
+        className={clsx(
+          'dark:bg-dark dark:text-white',
+          'milky:bg-[#fff5e3] street:bg-street-800'
+        )}
       >
         {demoMode && (
           <select
@@ -21,6 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <option value='light'>light</option>
             <option value='dark'>dark</option>
             <option value='theme-milky'>milky</option>
+            <option value='theme-street dark'>street</option>
           </select>
         )}
         {children}
