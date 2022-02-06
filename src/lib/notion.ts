@@ -80,11 +80,13 @@ export const getCategoryUrls = async (category: string) => {
 
   const results = response.results as unknown as LinkResult[];
 
-  const url: Omit<Url, 'count'>[] = results.map((result) => ({
-    pageId: result?.id,
-    slug: result?.properties.slug.title[0]?.plain_text,
-    link: result?.properties.link.rich_text[0]?.plain_text,
-  }));
+  const url: Omit<Url, 'count'>[] = results
+    .map((result) => ({
+      pageId: result?.id,
+      slug: result?.properties.slug.title[0]?.plain_text,
+      link: result?.properties.link.rich_text[0]?.plain_text,
+    }))
+    .sort((a, b) => a.slug.localeCompare(b.slug));
 
   return url;
 };
