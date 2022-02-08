@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.1](https://github.com/theodorusclarence/notiolink/compare/v0.3.0...v0.3.1) (2022-02-08)
+
+
+### Features
+
+* sort category tree ([9c389bd](https://github.com/theodorusclarence/notiolink/commit/9c389bd5fb5522f91e91436e8439f85d5e494c62))
+
+
+### Bug Fixes
+
+* new category won't build ([76bcf33](https://github.com/theodorusclarence/notiolink/commit/76bcf337a832bf10de7803a5f7b8a9012130e11a))
+* wrong autofocus order ([8d3b255](https://github.com/theodorusclarence/notiolink/commit/8d3b255596e9878dd3e10cf9c69b9ed29ad29d52))
+
 ## [0.3.0](https://github.com/theodorusclarence/notiolink/compare/v0.2.0...v0.3.0) (2022-02-06)
 
 
