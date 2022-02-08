@@ -36,7 +36,7 @@ export default function SandboxPage() {
       <Seo templateTitle='Sandbox' />
 
       <section className='bg-gray-100'>
-        <div className='layout flex flex-col items-start py-20 space-y-3 min-h-screen'>
+        <div className='flex flex-col items-start layout min-h-screen py-20 space-y-3'>
           <Button onClick={() => toast.success('Hello!')}>Open Toast</Button>
           <Button
             isLoading={isLoading}

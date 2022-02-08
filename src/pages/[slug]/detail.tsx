@@ -48,21 +48,21 @@ export default function DetailPage() {
 
       <main>
         <section className=''>
-          <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
+          <div className='flex flex-col items-center justify-center layout min-h-screen py-20'>
             <h1 className='h0'>
               <Accent>Link Details</Accent>
             </h1>
 
             {link ? (
-              <QRCode link={link} className='mt-8' />
+              <QRCode link={`https://${link}`} className='mt-8' />
             ) : (
-              <Skeleton className='mt-8 w-64 h-64' />
+              <Skeleton className='h-64 mt-8 w-64' />
             )}
 
             {link ? (
               <CopyBox link={link} className='mt-8' />
             ) : (
-              <Skeleton className='mt-8 w-72 h-14 rounded' />
+              <Skeleton className='h-14 mt-8 rounded w-72' />
             )}
 
             <div className='mt-6'>
@@ -71,15 +71,15 @@ export default function DetailPage() {
                 {url?.link ? (
                   <Favicon fullUrl={url.link} />
                 ) : (
-                  <Skeleton className='w-5 h-5' />
+                  <Skeleton className='h-5 w-5' />
                 )}
-                <div className='w-full max-w-sm font-medium text-gray-300 break-all'>
-                  {url?.link ? url.link : <Skeleton className='w-64 h-5' />}
+                <div className='break-all dark:text-gray-300 font-medium max-w-sm text-gray-600 w-full'>
+                  {url?.link ? url.link : <Skeleton className='h-5 w-64' />}
                 </div>
               </div>
               <div className='flex gap-4 items-center mt-2'>
-                <HiCursorClick className='w-5 h-5' />
-                <span className='font-medium text-gray-300'>
+                <HiCursorClick className='h-5 w-5' />
+                <span className='dark:text-gray-300 font-medium text-gray-600'>
                   {url?.count ?? '—'} click{(url?.count ?? 0) > 1 && 's'}
                 </span>
               </div>

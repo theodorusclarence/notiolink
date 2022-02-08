@@ -16,7 +16,7 @@ export default function CopyBox({ className, link, ...rest }: CopyBoxProps) {
   return (
     <div
       className={clsxm(
-        'flex gap-2 items-center p-2 pl-4 max-w-sm rounded border border-gray-600',
+        'flex max-w-sm items-center gap-2 rounded border border-gray-300 p-2 pl-4 dark:border-gray-600',
         className
       )}
       {...rest}
@@ -31,7 +31,7 @@ export default function CopyBox({ className, link, ...rest }: CopyBoxProps) {
         text={link}
         onCopy={() => toast.success(`${trimHttps(link)} copied to clipboard`)}
       >
-        <button className='p-2 rounded-full hover:text-primary-400 focus:ring focus:ring-primary-400 focus:outline-none'>
+        <button className='dark:text-white focus:outline-none focus:ring focus:ring-primary-400 hover:text-primary-400 p-2 rounded-full text-gray-600'>
           <HiClipboard className='text-lg' />
         </button>
       </CopyToClipboard>

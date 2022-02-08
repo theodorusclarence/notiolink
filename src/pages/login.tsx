@@ -50,7 +50,7 @@ export default function NewLinkPage() {
 
       <main>
         <section>
-          <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
+          <div className='flex flex-col items-center justify-center layout min-h-screen py-20'>
             <h1 className='h0'>
               <Accent>Login to the account</Accent>
             </h1>
@@ -58,7 +58,7 @@ export default function NewLinkPage() {
             <FormProvider {...methods}>
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className='mt-8 w-full max-w-sm'
+                className='max-w-sm mt-8 w-full'
               >
                 <div className='space-y-4'>
                   <Input
@@ -76,7 +76,6 @@ export default function NewLinkPage() {
                     isLoading={isLoading}
                     className='justify-center w-full md:ml-auto md:w-auto'
                     variant='outline'
-                    isDarkBg
                     type='submit'
                   >
                     Login!

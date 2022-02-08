@@ -9,14 +9,11 @@ type FaviconProps = {
 } & Omit<NextImageProps, 'src' | 'alt' | 'width' | 'height'>;
 
 export default function Favicon({ className, fullUrl, ...rest }: FaviconProps) {
-  const FAVICON_URL = 'https://icons.duckduckgo.com/ip3/';
-  const { hostname } = new URL(fullUrl);
-
-  const src = FAVICON_URL + hostname + '.ico';
+  const { url, hostname } = getFaviconUrl(fullUrl);
 
   return (
     <NextImage
-      src={src}
+      src={url}
       alt={`${hostname} favicon`}
       width='20'
       height='20'
@@ -25,3 +22,10 @@ export default function Favicon({ className, fullUrl, ...rest }: FaviconProps) {
     />
   );
 }
+
+export const getFaviconUrl = (url: string) => {
+  const FAVICON_URL = 'https://icons.duckduckgo.com/ip3/';
+  const { hostname } = new URL(url);
+
+  return { url: FAVICON_URL + hostname + '.ico', hostname };
+};

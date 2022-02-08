@@ -26,6 +26,21 @@
   --clr-primary-800: rgb(var(--tw-clr-primary-800)); /* #065f46 */
   --clr-primary-900: rgb(var(--tw-clr-primary-900)); /* #064e3b */
   /* #endregion  /**======== Primary Color =========== */
+
+  --tw-clr-dark: 34, 34, 34; /* #222222 */
+
+  --tw-clr-milky-50: 255, 246, 233; /* #fff6e9 */
+  --tw-clr-milky-100: 255, 245, 227; /* #fff5e3 */
+  --tw-clr-milky-400: 129, 100, 82; /* #81644a */
+  --tw-clr-milky-500: 112, 77, 55; /* #70554f */
+
+  --tw-clr-street-400: 184, 105, 255; /* #b869ff */
+  --tw-clr-street-500: 104, 107, 253; /* #686afd */
+  --tw-clr-street-800: 1, 22, 39; /* #011627 */
+
+  --tw-clr-monokai-400: 249, 38, 114; /* #f92672 */
+  --tw-clr-monokai-500: 102, 217, 239; /* #66d9ef */
+  --tw-clr-monokai-800: 39, 40, 34; /* #272822 */
 }
 
 @layer base {
@@ -47,27 +62,27 @@
 
   /* #region  /**=========== Typography =========== */
   .h0 {
-    @apply font-primary text-3xl font-bold md:text-5xl;
+    @apply font-bold font-primary text-3xl md:text-5xl;
   }
 
   h1,
   .h1 {
-    @apply font-primary text-2xl font-bold md:text-4xl;
+    @apply font-bold font-primary text-2xl md:text-4xl;
   }
 
   h2,
   .h2 {
-    @apply font-primary text-xl font-bold md:text-3xl;
+    @apply font-bold font-primary text-xl md:text-3xl;
   }
 
   h3,
   .h3 {
-    @apply font-primary text-lg font-bold md:text-2xl;
+    @apply font-bold font-primary text-lg md:text-2xl;
   }
 
   h4,
   .h4 {
-    @apply font-primary text-base font-bold md:text-lg;
+    @apply font-bold font-primary text-base md:text-lg;
   }
 
   body,
@@ -92,23 +107,41 @@
   }
 }
 
-@layer utilities {
-  .animated-underline {
-    background-image: linear-gradient(#33333300, #33333300),
-      linear-gradient(to right, var(--clr-primary-400), var(--clr-primary-500));
-    background-size: 100% 2px, 0 2px;
-    background-position: 100% 100%, 0 100%;
-    background-repeat: no-repeat;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .animated-underline {
-      transition: 0.3s ease;
-      transition-property: background-size, color, background-color,
-        border-color;
-    }
-  }
-  .animated-underline:hover,
-  .animated-underline:focus-visible {
-    background-size: 0 2px, 100% 2px;
-  }
+/* #region  /**=========== Theme =========== */
+.accent-gradient {
+  @apply from-emerald-500 to-green-500;
 }
+
+.dark .accent-gradient {
+  @apply from-emerald-400 to-amber-400;
+}
+
+.theme-milky {
+  --tw-clr-primary-50: var(--tw-clr-milky-50);
+  --tw-clr-primary-100: var(--tw-clr-milky-100);
+  --tw-clr-primary-400: var(--tw-clr-milky-400);
+  --tw-clr-primary-500: var(--tw-clr-milky-500);
+}
+.theme-milky .accent-gradient {
+  @apply from-milky-400 to-milky-500;
+}
+
+.theme-street {
+  --tw-clr-primary-400: var(--tw-clr-street-400);
+  --tw-clr-primary-500: var(--tw-clr-street-500);
+  --tw-clr-primary-800: var(--tw-clr-street-800);
+}
+.theme-street .accent-gradient {
+  @apply from-street-400 to-street-500;
+}
+
+.theme-monokai {
+  --tw-clr-primary-400: var(--tw-clr-monokai-400);
+  --tw-clr-primary-500: var(--tw-clr-monokai-500);
+  --tw-clr-primary-800: var(--tw-clr-monokai-800);
+  --tw-clr-dark: var(--tw-clr-monokai-800);
+}
+.theme-monokai .accent-gradient {
+  @apply from-monokai-400 to-monokai-500 via-[#7649f3];
+}
+/* #endregion  /**======== Theme =========== */

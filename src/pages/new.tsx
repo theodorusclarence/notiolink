@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import * as React from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useQuery } from 'react-query';
 
 import { getFromLocalStorage } from '@/lib/helper';
 import useLoadingToast from '@/hooks/toast/useLoadingToast';
@@ -79,25 +80,31 @@ export default function NewLinkPage() {
   }, [router.isReady, router.query, setValue]);
   //#endregion  //*======== Set Slug Query ===========
 
+  //#region  //*=========== Get Suggestion List ===========
+  const { data: categoriesData } = useQuery<{ categories: string[] }, Error>(
+    `/api/categories`
+  );
+  const categories = categoriesData?.categories ?? [];
+  //#endregion  //*======== Get Suggestion List ===========
+
   return (
     <Layout>
       <Seo templateTitle='Shorten!' />
 
       <main>
         <section>
-          <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
+          <div className='flex flex-col items-center justify-center layout min-h-screen py-20'>
             <h1 className='h0'>
               <Accent>Shorten New Link</Accent>
             </h1>
 
             <Button
-              className='absolute top-8 right-8'
+              className='absolute right-8 top-8'
               onClick={() => {
                 localStorage.removeItem('@notiolink/app_token');
                 router.push('/');
               }}
               variant='outline'
-              isDarkBg
             >
               Logout
             </Button>
@@ -105,27 +112,15 @@ export default function NewLinkPage() {
             <FormProvider {...methods}>
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className='mt-8 w-full max-w-sm'
+                className='max-w-md mt-8 w-full'
               >
                 <div className='space-y-4'>
                   <Input
-                    id='slug'
-                    label='Slug'
-                    placeholder='slug'
-                    autoFocus
-                    validation={{
-                      required: 'Slug must be filled',
-                      pattern: {
-                        value: /^\S+$/,
-                        message: 'Cannot include whitespace',
-                      },
-                    }}
-                  />
-                  <Input
                     id='link'
-                    label='Link'
+                    label='Full Link'
                     helperText='Must include http or https'
                     placeholder='https://google.com'
+                    autoFocus
                     validation={{
                       required: 'Link must be filled',
                       pattern: {
@@ -135,13 +130,36 @@ export default function NewLinkPage() {
                       },
                     }}
                   />
+                  <Input
+                    id='slug'
+                    label='Slug'
+                    placeholder='slug'
+                    validation={{
+                      required: 'Slug must be filled',
+                      pattern: {
+                        value: /^\S+$/,
+                        message: 'Cannot include whitespace',
+                      },
+                    }}
+                  />
+                  <Input
+                    id='category'
+                    label='Category (optional)'
+                    placeholder='category'
+                    list='category-list'
+                    autoComplete='off'
+                  />
+                  <datalist id='category-list'>
+                    {categories?.map((category) => (
+                      <option value={category} key={category} />
+                    ))}
+                  </datalist>
                 </div>
 
                 <div className='flex flex-col mt-5'>
                   <Button
                     className='justify-center w-full md:ml-auto md:w-auto'
                     variant='outline'
-                    isDarkBg
                     type='submit'
                     isLoading={isLoading}
                   >

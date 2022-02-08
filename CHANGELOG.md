@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/theodorusclarence/notiolink/compare/v0.3.1...v0.3.2) (2022-02-08)
+
+
+### Features
+
+* add category input in new ([05b29fc](https://github.com/theodorusclarence/notiolink/commit/05b29fc5053458091a36538d16eaebfbd897e57d))
+
+### [0.3.1](https://github.com/theodorusclarence/notiolink/compare/v0.3.0...v0.3.1) (2022-02-08)
+
+
+### Features
+
+* sort category tree ([9c389bd](https://github.com/theodorusclarence/notiolink/commit/9c389bd5fb5522f91e91436e8439f85d5e494c62))
+
+
+### Bug Fixes
+
+* new category won't build ([76bcf33](https://github.com/theodorusclarence/notiolink/commit/76bcf337a832bf10de7803a5f7b8a9012130e11a))
+* wrong autofocus order ([8d3b255](https://github.com/theodorusclarence/notiolink/commit/8d3b255596e9878dd3e10cf9c69b9ed29ad29d52))
+
+## [0.3.0](https://github.com/theodorusclarence/notiolink/compare/v0.2.0...v0.3.0) (2022-02-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* add category tree
+
+### Features
+
+* add category tree ([7b72869](https://github.com/theodorusclarence/notiolink/commit/7b72869c55c9aaf31cd1abe7c7ff3fee6e0e8fc4))
+
+## [0.2.0](https://github.com/theodorusclarence/notiolink/compare/v0.1.1...v0.2.0) (2022-02-06)
+
+
+### Features
+
+* add customizable gradient ([a4e64b2](https://github.com/theodorusclarence/notiolink/commit/a4e64b250693369dc9bbc98dbab6b6b74c253f5c))
+* add monokai theme ([04deb21](https://github.com/theodorusclarence/notiolink/commit/04deb212e20cd5727156b0aa8bf63ef2c73203e7))
+* add notiolink config for theme ([3c9bf0d](https://github.com/theodorusclarence/notiolink/commit/3c9bf0d02767ddde3bf3a7bd788178814e17196c))
+* add street theme ([abfa0a1](https://github.com/theodorusclarence/notiolink/commit/abfa0a1f2614efbfe858d1b6cc77de607c4c9835))
+* add theme changer ([fbdacd0](https://github.com/theodorusclarence/notiolink/commit/fbdacd04fa14f0f5eca87cbc6ac9e2143354f53d))
+* optional twitter handle ([dd07db2](https://github.com/theodorusclarence/notiolink/commit/dd07db20068df5949c605420aac454aa0e061aa2))
+
+### [0.1.1](https://github.com/theodorusclarence/notiolink/compare/v0.1.0...v0.1.1) (2022-02-05)
+
+
+### Bug Fixes
+
+* qr code link error ([ad1ca40](https://github.com/theodorusclarence/notiolink/commit/ad1ca40ca2c6d005ab64ff3ff2c773d9ec53f651))
+
 ## 0.1.0 (2022-01-23)
 
 

@@ -11,7 +11,7 @@ export default function NotFoundPage() {
 
       <main>
         <section className=''>
-          <div className='layout flex flex-col justify-center items-center py-20 min-h-screen'>
+          <div className='flex flex-col items-center justify-center layout min-h-screen py-20'>
             <h1 className='text-5xl md:text-7xl'>
               <Accent>Link not found</Accent>
             </h1>

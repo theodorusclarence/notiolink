@@ -44,6 +44,53 @@ export const getUrlBySlug = async (slug: string) => {
   return url;
 };
 
+export const getAllLinkCategories = async () => {
+  if (!NOTION_LINK_DATABASE_ID) {
+    throw new Error('NEXT_PUBLIC_NOTION_LINK_DATABASE_ID env is not defined');
+  }
+
+  const response = await notion.databases.retrieve({
+    database_id: NOTION_LINK_DATABASE_ID,
+  });
+
+  const results = response as unknown as LinkResult;
+
+  const categories = results.properties.categories.multi_select.options.map(
+    (option) => option.name
+  );
+
+  return categories;
+};
+
+/**
+ * Get URLs Category
+ */
+export const getCategoryUrls = async (category: string) => {
+  if (!NOTION_LINK_DATABASE_ID) {
+    throw new Error('NEXT_PUBLIC_NOTION_LINK_DATABASE_ID env is not defined');
+  }
+
+  const response = await notion.databases.query({
+    database_id: NOTION_LINK_DATABASE_ID,
+    filter: {
+      property: 'categories',
+      multi_select: { contains: category },
+    },
+  });
+
+  const results = response.results as unknown as LinkResult[];
+
+  const url: Omit<Url, 'count'>[] = results
+    .map((result) => ({
+      pageId: result?.id,
+      slug: result?.properties.slug.title[0]?.plain_text,
+      link: result?.properties.link.rich_text[0]?.plain_text,
+    }))
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+
+  return url;
+};
+
 /**
  * Increment count column by 1
  */
@@ -87,7 +134,11 @@ export const checkSlugIsTaken = async (slug: string) => {
 /**
  * Add new link to the notion database
  */
-export const addLink = async (slug: string, link: string) => {
+export const addLink = async (
+  slug: string,
+  link: string,
+  category?: string
+) => {
   if (!NOTION_LINK_DATABASE_ID) {
     throw new Error('NEXT_PUBLIC_NOTION_LINK_DATABASE_ID env is not defined');
   }
@@ -124,6 +175,12 @@ export const addLink = async (slug: string, link: string) => {
           },
         ],
       },
+      ...(category && {
+        categories: {
+          type: 'multi_select',
+          multi_select: [{ name: category }],
+        },
+      }),
     },
   });
 };

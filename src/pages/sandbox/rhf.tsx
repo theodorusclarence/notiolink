@@ -27,11 +27,11 @@ export default function RHFSandbox() {
       <Seo templateTitle='React Hook Form Sandbox' />
 
       <section className=''>
-        <div className='layout py-20 min-h-screen'>
+        <div className='layout min-h-screen py-20'>
           <FormProvider {...methods}>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className='space-y-3 max-w-sm'
+              className='max-w-sm space-y-3'
             >
               <Input
                 id='name'
@@ -43,7 +43,7 @@ export default function RHFSandbox() {
                 <Button variant='outline'>Not Submit</Button>
                 <Button type='submit'>Submit</Button>
               </div>
-              <p className='text-sm text-gray-800'>
+              <p className='text-gray-800 text-sm'>
                 Check console after submit
               </p>
             </form>

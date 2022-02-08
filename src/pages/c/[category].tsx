@@ -1,32 +1,46 @@
-/* eslint-disable @next/next/no-img-element */
-import { InferGetStaticPropsType } from 'next';
+import {
+  GetStaticPaths,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+} from 'next';
 import * as React from 'react';
 
-import { appName } from '@/lib/config';
-import { getSocialTree } from '@/lib/notion';
+import { getAllLinkCategories, getCategoryUrls } from '@/lib/notion';
 
 import Accent from '@/components/Accent';
+import { getFaviconUrl } from '@/components/Favicon';
 import Layout from '@/components/layout/Layout';
 import PrimaryLink from '@/components/links/PrimaryLink';
 import TreeLink from '@/components/links/TreeLink';
 import Seo from '@/components/Seo';
 
-export default function IndexPage({
+export default function CPage({
   links,
+  category,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout>
-      <Seo />
+      <Seo templateTitle={category} />
 
       <main>
         <section className=''>
           <div className='flex flex-col items-center justify-center layout min-h-screen py-20'>
             <h1 className='text-5xl text-center md:text-7xl'>
-              <Accent>{appName}</Accent>
+              <Accent>{category}</Accent>
             </h1>
             <div className='gap-4 grid max-w-sm mt-8 mx-auto text-center w-full'>
               {links.map((link) => (
-                <TreeLink key={link.id} link={link} />
+                <TreeLink
+                  key={link.pageId}
+                  link={{
+                    display: link.slug,
+                    link: link.link!,
+                    icon: {
+                      type: 'external',
+                      external: { url: getFaviconUrl(link.link!).url },
+                    },
+                  }}
+                />
               ))}
             </div>
             {/* Thank you for not removing this as an attribution 🙏 */}
@@ -43,9 +57,19 @@ export default function IndexPage({
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const categories = await getAllLinkCategories();
+
   return {
-    props: { links: await getSocialTree() },
+    paths: categories.map((category) => ({ params: { category } })),
+    fallback: 'blocking',
+  };
+};
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  const category = context.params?.category as string;
+  return {
+    props: { links: await getCategoryUrls(category), category },
     revalidate: 5,
   };
 };
