@@ -112,6 +112,7 @@ export default function NewLinkPage() {
                     label='Link'
                     helperText='Must include http or https'
                     placeholder='https://google.com'
+                    autoFocus
                     validation={{
                       required: 'Link must be filled',
                       pattern: {
@@ -125,7 +126,6 @@ export default function NewLinkPage() {
                     id='slug'
                     label='Slug'
                     placeholder='slug'
-                    autoFocus
                     validation={{
                       required: 'Slug must be filled',
                       pattern: {
