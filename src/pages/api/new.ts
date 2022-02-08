@@ -8,7 +8,7 @@ export default async function NewLinkHandler(
   res: NextApiResponse
 ) {
   if (req.method === 'POST') {
-    const url = req.body as { link: string; slug: string };
+    const url = req.body as { link: string; slug: string; category?: string };
     if (!url.link || !url.slug) {
       return res.status(400).json({
         message: 'Link and slug are required',
@@ -34,7 +34,7 @@ export default async function NewLinkHandler(
       });
     }
 
-    await addLink(url.slug, url.link);
+    await addLink(url.slug, url.link, url.category);
 
     res.status(201).send('OK');
   } else {
