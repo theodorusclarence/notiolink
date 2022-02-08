@@ -32,7 +32,7 @@ module.exports = {
           800: withOpacity('--tw-clr-primary-800'),
           900: withOpacity('--tw-clr-primary-900'),
         },
-        dark: '#222',
+        dark: '#222222',
       },
       keyframes: {
         flicker: {
