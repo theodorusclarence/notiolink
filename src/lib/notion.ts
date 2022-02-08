@@ -134,7 +134,11 @@ export const checkSlugIsTaken = async (slug: string) => {
 /**
  * Add new link to the notion database
  */
-export const addLink = async (slug: string, link: string) => {
+export const addLink = async (
+  slug: string,
+  link: string,
+  category?: string
+) => {
   if (!NOTION_LINK_DATABASE_ID) {
     throw new Error('NEXT_PUBLIC_NOTION_LINK_DATABASE_ID env is not defined');
   }
@@ -171,6 +175,12 @@ export const addLink = async (slug: string, link: string) => {
           },
         ],
       },
+      ...(category && {
+        categories: {
+          type: 'multi_select',
+          multi_select: [{ name: category }],
+        },
+      }),
     },
   });
 };

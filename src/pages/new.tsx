@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import * as React from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useQuery } from 'react-query';
 
 import { getFromLocalStorage } from '@/lib/helper';
 import useLoadingToast from '@/hooks/toast/useLoadingToast';
@@ -79,6 +80,13 @@ export default function NewLinkPage() {
   }, [router.isReady, router.query, setValue]);
   //#endregion  //*======== Set Slug Query ===========
 
+  //#region  //*=========== Get Suggestion List ===========
+  const { data: categoriesData } = useQuery<{ categories: string[] }, Error>(
+    `/api/categories`
+  );
+  const categories = categoriesData?.categories ?? [];
+  //#endregion  //*======== Get Suggestion List ===========
+
   return (
     <Layout>
       <Seo templateTitle='Shorten!' />
@@ -104,12 +112,12 @@ export default function NewLinkPage() {
             <FormProvider {...methods}>
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className='mt-8 w-full max-w-sm'
+                className='mt-8 w-full max-w-md'
               >
                 <div className='space-y-4'>
                   <Input
                     id='link'
-                    label='Link'
+                    label='Full Link'
                     helperText='Must include http or https'
                     placeholder='https://google.com'
                     autoFocus
@@ -134,6 +142,18 @@ export default function NewLinkPage() {
                       },
                     }}
                   />
+                  <Input
+                    id='category'
+                    label='Category (optional)'
+                    placeholder='category'
+                    list='category-list'
+                    autoComplete='off'
+                  />
+                  <datalist id='category-list'>
+                    {categories?.map((category) => (
+                      <option value={category} key={category} />
+                    ))}
+                  </datalist>
                 </div>
 
                 <div className='mt-5 flex flex-col'>
