@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { appName, deployUrl, seoDescription, twitter } from '@/lib/config';
+import { appName, deployUrl, seoDescription } from '@/lib/config';
 
 const defaultMeta = {
   title: appName,
