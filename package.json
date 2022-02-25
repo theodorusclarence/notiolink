@@ -16,7 +16,6 @@
     "format:check": "prettier -c .",
     "release": "standard-version",
     "push-release": "git push --follow-tags origin main",
-    "postbuild": "next-sitemap",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -60,7 +59,6 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^11.2.6",
-    "next-sitemap": "^1.9.12",
     "postcss": "^8.4.6",
     "prettier": "^2.5.1",
     "prettier-plugin-tailwindcss": "^0.1.7",

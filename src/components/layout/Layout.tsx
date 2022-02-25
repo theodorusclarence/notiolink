@@ -1,18 +1,10 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
-import { demoMode, theme as configTheme } from '@/lib/config';
-
-export const themeColor = {
-  light: 'light',
-  dark: 'dark',
-  milky: 'theme-milky',
-  street: 'theme-street dark',
-  monokai: 'theme-monokai dark',
-};
+import { config, themeColor } from '@/lib/env';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = React.useState(themeColor[configTheme]);
+  const [theme, setTheme] = React.useState(themeColor[config.appTheme]);
 
   return (
     <div className={theme}>
@@ -22,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           'milky:bg-[#fff5e3] street:bg-street-800'
         )}
       >
-        {demoMode === 'true' && (
+        {config.demoMode && (
           <select
             name='theme'
             className='fixed top-4 left-4 rounded bg-transparent'
