@@ -2,7 +2,7 @@
 import { InferGetStaticPropsType } from 'next';
 import * as React from 'react';
 
-import { appName } from '@/lib/config';
+import { config } from '@/lib/env';
 import { getSocialTree } from '@/lib/notion';
 
 import Accent from '@/components/Accent';
@@ -22,7 +22,7 @@ export default function IndexPage({
         <section className=''>
           <div className='layout flex min-h-screen flex-col items-center justify-center py-20'>
             <h1 className='text-center text-5xl md:text-7xl'>
-              <Accent>{appName}</Accent>
+              <Accent>{config.appName}</Accent>
             </h1>
             <div className='mx-auto mt-8 grid w-full max-w-sm gap-4 text-center'>
               {links.map((link) => (
