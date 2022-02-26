@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/theodorusclarence/notiolink/compare/v0.3.2...v1.0.0) (2022-02-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* move config to env
+
+### Features
+
+* move config to env ([82a6071](https://github.com/theodorusclarence/notiolink/commit/82a60713756f67b3f32384501b54f1232f0f3061))
+
 ### [0.3.2](https://github.com/theodorusclarence/notiolink/compare/v0.3.1...v0.3.2) (2022-02-08)
 
 
