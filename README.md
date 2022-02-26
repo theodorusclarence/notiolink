@@ -8,6 +8,8 @@
 
 Please read the full guide on [this notion page](https://notiolink.thcl.dev/installation-guide)
 
+If you are migrating from v0 to v1, I suggest to re-fork the project and add the environment variables.
+
 ## Features
 
 - ⚡ Unlimited branded links (use your own domain!)
@@ -15,7 +17,7 @@ Please read the full guide on [this notion page](https://notiolink.thcl.dev/inst
 - 💨 Fast redirect using Next.js Middleware Functions
 - 🌑 Awesome CMS using Notion
 - ➕ See click count statistics
-- 💠 Easy one file config
+- 💠 Zero config, all customizable via env
 - 💅 Numerous themes
 
 ### Link Tree Page
