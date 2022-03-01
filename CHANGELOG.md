@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/theodorusclarence/notiolink/compare/v1.0.0...v1.1.0) (2022-03-01)
+
+
+### Features
+
+* add new link on 404 for admin ([b62728b](https://github.com/theodorusclarence/notiolink/commit/b62728b42e7972b01ca0e8c2ddfee3558cb14295))
+
 ## [1.0.0](https://github.com/theodorusclarence/notiolink/compare/v0.3.2...v1.0.0) (2022-02-26)
 
 
