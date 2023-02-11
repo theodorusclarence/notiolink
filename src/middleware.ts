@@ -1,8 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { getUrlBySlug } from '@/lib/notion';
+import { getAllLinkCategories, getUrlBySlug } from '@/lib/notion';
 
 export default async function middleware(req: NextRequest) {
+  if (req.nextUrl.pathname.startsWith('/c/')) {
+    const path = req.nextUrl.pathname.split('/')[2];
+
+    const categories = await getAllLinkCategories();
+
+    if (categories.includes(path)) {
+      return;
+    } else {
+      return NextResponse.redirect('/404');
+    }
+  }
+
   const path = req.nextUrl.pathname.split('/')[1];
   const whitelist = [
     'favicons',
