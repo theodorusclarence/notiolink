@@ -92,7 +92,7 @@ export default function Input({
         )}
         {!hideError && errors[id] && (
           <span className='text-sm text-red-600 dark:text-red-400'>
-            {errors[id].message}
+            {errors[id]?.message as unknown as string}
           </span>
         )}
       </div>
