@@ -59,7 +59,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^11.2.6",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.31",
     "prettier": "^2.8.4",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "react-test-renderer": "^17.0.2",
